@@ -91,7 +91,7 @@ HTML_PAGE = """<!DOCTYPE html>
   <h3>Anlık Başarılı Girişler (Coin'e göre sıralı):</h3>
   <div class="output" id="sonuc"></div>
   
-  <a href="https://t.me/jasontoolsk" class="telegram-button" target="_blank">
+  <a href="https://t.me/batutool" class="telegram-button" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
     Kanalımıza Katıl
   </a>
