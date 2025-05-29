@@ -191,7 +191,7 @@ def caption():
     sifre = parts[1].strip()
 
     try:
-        # Login request
+        # Login isteği
         login_resp = requests.post(
             "https://api.likesjet.com/users/login",
             json={"email": email, "password": sifre},
@@ -209,7 +209,7 @@ def caption():
     if login_json.get("status") and login_json.get("accessToken"):
         token = login_json["accessToken"]
         try:
-            # Details request
+            # Details isteği
             detay_resp = requests.get(
                 "https://api.likesjet.com/users/details",
                 headers={"Authorization": f"Bearer {token}"},
@@ -223,7 +223,7 @@ def caption():
         if detay_json.get("status") and detay_json.get("details") and detay_json["details"].get("coins", 0) > 0:
             coin = detay_json["details"]["coins"]
             user_id = detay_json["details"].get("id", "")
-            # Return structured data to be used in UI
+            # Yapılandırılmış veriyi döneceğiz
             result = {
                 "email": email,
                 "sifre": sifre,
@@ -232,6 +232,7 @@ def caption():
             }
             return jsonify({"success": True, "result": result})
     return jsonify({"success": False})
-    
+
+# Bu blok yalnızca development sırasında çalışacak; Gunicorn bunu kullanmayacak
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
